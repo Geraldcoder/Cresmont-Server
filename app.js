@@ -15,7 +15,8 @@ const authMiddleware = require('./middleware/authMiddleWare')
 const adminMiddleware = require('./middleware/adminMiddleWare')
 
 const allowedOrigins = (
-  process.env.CLIENT_ORIGINS || 'https://cresmont.com,https://cresmontadmin.com'
+  process.env.CLIENT_ORIGINS ||
+  'https://cresmont.netlify.app,https://cresmontadmin.netlify.app'
 )
   .split(',')
   .map((origin) => origin.trim())
