@@ -207,7 +207,7 @@ UserSchema.methods.clearAuthCookie = function (res) {
   res.clearCookie(cookieName, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    sameSite: 'none',
     path: '/',
   })
 }
