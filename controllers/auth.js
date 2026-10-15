@@ -253,7 +253,7 @@ const passResetLink = async (req, res, next) => {
 
     await user.save()
 
-    const resetLink = `http://localhost:5173/reset-password/${resetToken}`
+    const resetLink = `https://cresmont.netlify.app/reset-password/${resetToken}`
 
     // Replace this with your email service later
     console.log('Password reset link:', resetLink)
