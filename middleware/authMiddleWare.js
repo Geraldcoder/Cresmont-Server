@@ -7,7 +7,11 @@ const authMiddleware = (req, res, next) => {
       ? '__Host-cresmont_access'
       : 'cresmont_access'
 
-  const token = req.cookies?.[cookieName]
+  const authorization = req.get('Authorization') || ''
+  const bearerToken = authorization.startsWith('Bearer ')
+    ? authorization.slice(7).trim()
+    : null
+  const token = bearerToken || req.cookies?.[cookieName]
 
   if (!token) {
     return next(new UnAuthorizedError('You have to login first'))

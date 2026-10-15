@@ -113,7 +113,7 @@ const register = async (req, res, next) => {
     const token = user.getJWT()
     user.genCookie(res, token)
 
-    res.status(StatusCodes.CREATED).json({ msg: user._id })
+    res.status(StatusCodes.CREATED).json({ msg: user._id, token })
   } catch (error) {
     next(error)
   }
@@ -132,7 +132,7 @@ const login = async (req, res, next) => {
     }
     const token = await user.getJWT()
     user.genCookie(res, token)
-    res.status(StatusCodes.OK).json({ msg: user._id })
+    res.status(StatusCodes.OK).json({ msg: user._id, token })
   } catch (error) {
     next(error)
   }
