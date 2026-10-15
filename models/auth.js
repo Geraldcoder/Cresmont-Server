@@ -182,14 +182,15 @@ UserSchema.methods.comparePass = function (password) {
 }
 
 UserSchema.methods.genCookie = function (res, token) {
-  const isProduction = process.env.NODE_ENV === 'production'
-
-  const cookieName = isProduction ? '__Host-cresmont_access' : 'cresmont_access'
+  const cookieName =
+    process.env.NODE_ENV === 'production'
+      ? '__Host-cresmont_access'
+      : 'cresmont_access'
 
   res.cookie(cookieName, token, {
     httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? 'none' : 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     path: '/',
     maxAge: 15 * 60 * 1000,
   })
